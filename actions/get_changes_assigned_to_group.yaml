@@ -1,0 +1,20 @@
+---
+name: "get_changes_assigned_to_group"
+runner_type: "action-chain"
+description: "Run a string GET query on the ServiceNow API"
+enabled: true
+entry_point: "workflows/get_changes_assigned_to_group.yaml"
+parameters:
+  group_name:
+    type: "string"
+    description: "Group name"
+    required: true
+  active_only:
+    type: "boolean"
+    description: "Get only active changes"
+    required: true
+    default: true
+  skip_notify:
+    default:
+      - "getChanges"
+      - "getGroup"

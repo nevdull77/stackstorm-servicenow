@@ -1,0 +1,19 @@
+---
+name: "servicenow.get_changes_assigned_to_group"
+action_ref: "servicenow.get_changes_assigned_to_group"
+description: "Get a list of changes assigned to a particular group"
+formats:
+    - "changes assigned to group {{group_name}}"
+ack:
+    format: "Finding all changes assigned "
+result:
+  format: |
+    {% if execution.result.tasks[1].result.result|length %}
+    found some changes for you: {~}
+    {% for change in execution.result.tasks[1].result.result %}
+    {{ loop.index }}. *{{ change.number }}*: {{change.short_description}}
+    {% endfor %}
+    {% else %}
+    couldn't find anything, sorry!
+    {% endif %}
+

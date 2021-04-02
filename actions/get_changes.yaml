@@ -1,0 +1,16 @@
+---
+name: "get_changes"
+runner_type: "python-script"
+description: "Run a string GET query on the ServiceNow API"
+enabled: true
+entry_point: "get_changes.py"
+parameters:
+  group_id:
+    type: "string"
+    description: "Assingment group to get changes for"
+    required: false
+  active_only:
+    type: "boolean"
+    description: "Only retrieve active changes"
+    required: false
+    default: true

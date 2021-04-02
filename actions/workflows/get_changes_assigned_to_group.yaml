@@ -1,0 +1,19 @@
+---
+    chain:
+        -
+            name: "getGroup"
+            ref: "servicenow.get_non_structured"
+            parameters:
+                table: "sys_user_group"
+                query: "name={{group_name}}"
+            on-success: getChanges
+            publish:
+                group_id: "{{getGroup.result[0].sys_id}}"
+        -
+            name: "getChanges"
+            ref: "servicenow.get_changes"
+            parameters:
+                group_id: "{{group_id}}"
+                active_only: "{{active_only}}"
+            publish:
+                incidents: "{{getChanges.result}}"

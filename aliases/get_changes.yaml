@@ -1,0 +1,19 @@
+---
+name: "servicenow.get_changes"
+action_ref: "servicenow.get_changes"
+description: "Get a list of changes"
+formats:
+    - "all changes"
+ack:
+    format: "Finding all changes"
+result:
+  format: |
+    {% if execution.result.result|length %}
+    found some changes for you: {~}
+    {% for change in execution.result.result %}
+    {{ loop.index }}. *{{ change.number }}*: {{change.short_description}}
+    {% endfor %}
+    {% else %}
+    couldn't find anything, sorry!
+    {% endif %}
+
