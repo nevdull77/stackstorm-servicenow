@@ -7,7 +7,7 @@ entry_point: "get_changes.py"
 parameters:
   group_id:
     type: "string"
-    description: "Assingment group to get changes for"
+    description: "Assignment group to get changes for"
     required: false
   active_only:
     type: "boolean"
